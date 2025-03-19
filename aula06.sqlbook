@@ -1,0 +1,18 @@
+-- SQLBook: Code
+
+-- SQLBook: Markup
+## ATIVIDADE CAIO SQL AULA 06
+-- SQLBook: Markup
+
+### INSERT: inserir 
+ 
+```mb
+INSERT INTO nome_tabela (colunaA, colunaB, ...) VALUES
+    (valor1a, valor1b, ...),
+    (valor2a, valor2b, ...),
+    (valor3a, valo
+-- SQLBook: Markupr3b
+
+)
+;
+```

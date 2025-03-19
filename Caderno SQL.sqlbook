@@ -1,0 +1,456 @@
+-- SQLBook: Markup
+# Caderno SQL
+
+Organização em células que podem ser em formato `markdown` como `código` SQL.
+
+### Célula `markdown`
+
+A célula `markdown` é uma linguagem de marcação simplificada, parecida com HTML, inclusive permite utilizar alguns elementos HTML
+como: `<img>`, `<a>`, `<table>`, `<tr>`, `<td>`, `<th>`, `<ol>`, `<ul>`, `<li>`, `<p>`, `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>`.
+
+Esse tipo de célula permite descrever o caderno, incluir imagens, links, tabelas, listas, além de fórmulas matemáticas.
+
+### Célula `código`
+
+Escreva códigos `SQL` e execute diretamente. Para executar o código, basta clicar no botão `Run` ou pressionar `Ctrl+Enter`.
+-- SQLBook: Markup
+# Modos edição e navegação
+
+### Modo edição
+
+Ao entrar em uma célula com duplo clique ou `Enter` a célula é editável. Ao sair da célula com `Esc` a célula volta ao modo de navegação. Ao executar com `Ctrl+Enter` a célula é executada e volta ao modo de navegação.
+
+### Modo navegação
+
+Teclas de atalho:
+
+ - Setas para cima e para baixo: permite navegar entre as células
+ - `Enter`: em uma célula o `Modo de edição` é habilitado.
+ - `Ctrl + Enter` ou `Shift + Enter`: cria uma nova célula e entra no modo de edição.
+ - `Delete`: apaga a célula em foco
+-- SQLBook: Markup
+# A célula markdown
+-- SQLBook: Markup
+## Cabeçalhos
+-- SQLBook: Markup
+```md
+# Cabeçalho nível 1
+## Cabeçalho nível 2
+### Cabeçalho nível 3
+```
+-- SQLBook: Markup
+## Lista normal
+
+-- SQLBook: Markup
+
+```md
+- Item 1
+- Item 2
+- Item 3
+```
+
+
+-- SQLBook: Markup
+## Lista numerada
+
+Os números não importam, ele ordena automaticamente
+
+
+-- SQLBook: Markup
+```md
+1. Item 1
+1. Item 2
+1. Item 3
+```
+
+
+
+-- SQLBook: Markup
+## Inserindo links
+
+
+-- SQLBook: Markup
+```md
+[texto](link)
+```
+
+[Link para o site IFSP](https://cpv.ifsp.edu.br/)
+
+
+
+-- SQLBook: Markup
+## Inserindo imagem
+
+``` md
+![Logo do IFSP Capivari](https://i.imgur.com/3CIpvlL.png)
+```
+
+![Logo do IFSP Capivari](https://i.imgur.com/3CIpvlL.png)
+
+
+
+-- SQLBook: Markup
+## Inserindo tabela
+
+```md
+| Nome | Curso | Nota |
+|------|-------|------|
+| João | ADS   | 9.5  |
+| Maria| ADS   | 9.0  |
+```
+-- SQLBook: Markup
+# Escrevendo código `SQL`
+-- SQLBook: Code
+CREATE DATABASE aula06;
+
+USE aula06;
+-- SQLBook: Code
+CREATE TABLE tb_aluno (
+    id_aluno INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    telefone VARCHAR(20) NOT NULL
+);
+-- SQLBook: Code
+INSERT INTO tb_aluno 
+ VALUES 
+    (1, 'João', '271897483'),
+    (2, 'Maria', '271897484'),
+    (3, 'José', '271897485'),
+    (4, 'Pedro', '271897486'),
+    (5, 'Ana', '271897487'),
+    (6, 'Marcos', '271897488'),
+    (7, 'Paulo', '271897489'),
+    (8, 'Carla', '271897490'),
+    (9, 'Joana', '271897491'),
+    (10, 'Rafael', '271897492');
+-- SQLBook: Code
+SELECT * FROM tb_aluno;
+-- SQLBook: Markup
+|id_aluno|nome|telefone|
+|--------|----|--------|
+|1|João|271897483|
+|2|Maria|271897484|
+|3|José|271897485|
+|4|Pedro|271897486|
+|5|Ana|271897487|
+|6|Marcos|271897488|
+|7|Paulo|271897489|
+|8|Carla|271897490|
+|9|Joana|271897491|
+|10|Rafael|271897492
+-- SQLBook: Markup
+## WHERE
+
+### Operador Like
+
+Vamos selecionar todos que começam com a letra `p`
+-- SQLBook: Code
+SELECT *
+FROM tb_aluno
+WHERE nome LIKE 'p%';
+-- SQLBook: Code
+CREATE TABLE usuario (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  nome VARCHAR(255),
+  data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+TRUNCATE usuario;
+
+INSERT INTO usuario(nome) VALUES ('Caio');
+
+INSERT INTO usuario(nome) VALUES ('Outro');
+
+-- SQLBook: Code
+SELECT * FROM usuario;
+-- SQLBook: Markup
+|id|nome|data_criacao|
+|--|----|------------|
+|1|Caio|2025-03-17 23:52:47|
+|2|Outro|2025-03-17 23:52:50
+-- SQLBook: Code
+INSERT INTO usuario(nome) VALUES ('Caio');
+
+INSERT INTO usuario(nome) VALUES ('Outro');
+SELECT * FROM usuario;
+-- SQLBook: Markup
+|id|nome|data_criacao|
+|--|----|------------|
+|1|Caio|2025-03-17 23:52:47|
+|2|Outro|2025-03-17 23:52:50|
+|3|Caio|2025-03-17 23:53:39|
+|4|Outro|2025-03-17 23:53:40
+-- SQLBook: Code
+TRUNCATE usuario;
+INSERT INTO usuario(id, nome) VALUES 
+(1, 'Caio'), 
+(2, 'Outro');
+
+INSERT INTO usuario(id, nome) VALUES 
+(1, 'Caio'), 
+(2, 'Outro');
+-- SQLBook: Markup
+# Chave Estrangeira (FK): restrição para apagar!
+-- SQLBook: Code
+DROP TABLE IF EXISTS usuario;
+
+CREATE TABLE usuario (
+    id_usuario BIGINT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    data_cadastro DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO usuario
+VALUES
+    (1, 'Superman', '2025-01-15'),
+    (2, 'Batman', '2025-02-16'),
+    (3, 'Mulher-maravilha', '2025-03-17'),
+    (4, 'Flash', '2025-03-17');
+
+SELECT * FROM usuario;
+-- SQLBook: Markup
+|id_usuario|nome|data_cadastro|
+|----------|----|-------------|
+|1|Superman|2025-01-15 00:00:00|
+|2|Batman|2025-02-16 00:00:00|
+|3|Mulher-maravilha|2025-03-17 00:00:00|
+|4|Flash|2025-03-17 00:00:00
+-- SQLBook: Code
+DROP TABLE IF EXISTS post;
+CREATE TABLE post (
+    id_post INTEGER PRIMARY KEY AUTO_INCREMENT,
+    id_usuario  BIGINT REFERENCES usuario (id_usuario),
+    conteudo TEXT NOT NULL,
+    data_publicacao DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO post 
+VALUES
+    (1, 2, 'Gotham nunca dorme.', '2025-03-01'),
+    (2, 3, 'A força da verdade é imbatível.', '2025-03-17'),
+    (3, 4, 'A velocidade é tudo!', '2025-03-18');
+
+SELECT * FROM post;
+-- SQLBook: Markup
+|id_post|id_usuario|conteudo|data_publicacao|
+|-------|----------|--------|---------------|
+|1|2|Gotham nunca dorme.|2025-03-01 00:00:00|
+|2|3|A força da verdade é imbatível.|2025-03-17 00:00:00|
+|3|4|A velocidade é tudo!|2025-03-18 00:00:00
+-- SQLBook: Code
+# DELETE FROM post WHERE id_usuario = 2;
+# DELETE FROM usuario WHERE id_usuario = 2;
+-- SQLBook: Code
+DROP TABLE IF EXISTS post;
+CREATE TABLE post (
+    id_post INTEGER PRIMARY KEY AUTO_INCREMENT,
+    id_usuario  BIGINT REFERENCES usuario (id_usuario) ON DELETE CASCADE,
+    conteudo TEXT NOT NULL,
+    data_publicacao DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO post 
+VALUES
+    (1, 2, 'Gotham nunca dorme.', '2025-03-01'),
+    (2, 3, 'A força da verdade é imbatível.', '2025-03-17'),
+    (3, 4, 'A velocidade é tudo!', '2025-03-18');
+
+SELECT * FROM post;
+
+
+START TRANSACTION;
+DELETE FROM usuario WHERE id_usuario = 2;
+SELECT * FROM usuario;
+SELECT * FROM post;
+ROLLBACK;
+-- SQLBook: Code
+use sakila;
+-- SQLBook: Markup
+# GROUP BY: agrupando dados
+
+Contar quantos atores têm o mesmo nome.
+-- SQLBook: Code
+SELECT first_name, COUNT(*) quantidade
+FROM actor
+GROUP BY first_name;
+-- SQLBook: Markup
+|first_name|quantidade|
+|----------|----------|
+|ADAM|2|
+|AL|1|
+|ALAN|1|
+|ALBERT|2|
+|ALEC|1|
+|ANGELA|2|
+|ANGELINA|1|
+|ANNE|1|
+|AUDREY|2|
+|BELA|1|
+|BEN|2|
+|BETTE|1|
+|BOB|1|
+|BURT|3|
+|CAMERON|3|
+|CARMEN|1|
+|CARY|1|
+|CATE|2|
+|CHARLIZE|1|
+|CHRIS|2|
+|CHRISTIAN|3|
+|CHRISTOPHER|2|
+|CUBA|3|
+|DAN|3|
+|DARYL|2|
+|DEBBIE|1|
+|DUSTIN|1|
+|ED|3|
+|ELLEN|1|
+|ELVIS|1|
+|EMILY|1|
+|EWAN|1|
+|FAY|3|
+|FRANCES|2|
+|FRED|1|
+|GARY|2|
+|GENE|3|
+|GEOFFREY|1|
+|GINA|1|
+|GOLDIE|1|
+|GRACE|1|
+|GREG|1|
+|GREGORY|1|
+|GRETA|2|
+|GROUCHO|3|
+|HARRISON|1|
+|HARVEY|1|
+|HELEN|1|
+|HENRY|1|
+|HUMPHREY|2|
+|IAN|1|
+|JADA|1|
+|JAMES|1|
+|JANE|1|
+|JAYNE|3|
+|JEFF|1|
+|JENNIFER|1|
+|JESSICA|1|
+|JIM|1|
+|JODIE|1|
+|JOE|1|
+|JOHN|1|
+|JOHNNY|2|
+|JON|1|
+|JUDE|1|
+|JUDY|1|
+|JULIA|4|
+|JULIANNE|1|
+|KARL|1|
+|KENNETH|4|
+|KEVIN|2|
+|KIM|1|
+|KIRK|1|
+|KIRSTEN|2|
+|LAURA|1|
+|LAURENCE|1|
+|LISA|1|
+|LIZA|1|
+|LUCILLE|2|
+|MAE|1|
+|MARY|2|
+|MATTHEW|3|
+|MEG|1|
+|MENA|2|
+|MERYL|2|
+|MICHAEL|2|
+|MICHELLE|1|
+|MILLA|2|
+|MINNIE|2|
+|MORGAN|3|
+|NATALIE|1|
+|NICK|3|
+|OLYMPIA|1|
+|OPRAH|1|
+|PARKER|1|
+|PENELOPE|4|
+|RALPH|1|
+|RAY|1|
+|REESE|2|
+|RENEE|2
+-- SQLBook: Markup
+Mostrar primeiros nomes com mais de um ator
+-- SQLBook: Code
+SELECT first_name, COUNT(*) quantidade
+FROM actor
+GROUP BY first_name
+HAVING quantidade > 1
+ORDER BY quantidade DESC, first_name;
+-- SQLBook: Markup
+|first_name|quantidade|
+|----------|----------|
+|JULIA|4|
+|KENNETH|4|
+|PENELOPE|4|
+|BURT|3|
+|CAMERON|3|
+|CHRISTIAN|3|
+|CUBA|3|
+|DAN|3|
+|ED|3|
+|FAY|3|
+|GENE|3|
+|GROUCHO|3|
+|JAYNE|3|
+|MATTHEW|3|
+|MORGAN|3|
+|NICK|3|
+|RUSSELL|3|
+|ADAM|2|
+|ALBERT|2|
+|ANGELA|2|
+|AUDREY|2|
+|BEN|2|
+|CATE|2|
+|CHRIS|2|
+|CHRISTOPHER|2|
+|DARYL|2|
+|FRANCES|2|
+|GARY|2|
+|GRETA|2|
+|HUMPHREY|2|
+|JOHNNY|2|
+|KEVIN|2|
+|KIRSTEN|2|
+|LUCILLE|2|
+|MARY|2|
+|MENA|2|
+|MERYL|2|
+|MICHAEL|2|
+|MILLA|2|
+|MINNIE|2|
+|REESE|2|
+|RENEE|2|
+|RIP|2|
+|SANDRA|2|
+|SCARLETT|2|
+|SEAN|2|
+|SPENCER|2|
+|SUSAN|2|
+|TOM|2|
+|VIVIEN|2|
+|WARREN|2|
+|WOODY|2
+-- SQLBook: Markup
+Ver os preços cobrados pela locação
+-- SQLBook: Code
+SELECT 
+    AVG(rental_rate) AS average_rental_rate,
+    MIN(rental_rate) AS minimum_rental_rate,
+    MAX(rental_rate) AS maximum_rental_rate,
+    SUM(rental_rate) AS total_rental_rate
+FROM 
+    film;
+-- SQLBook: Markup
+|average_rental_rate|minimum_rental_rate|maximum_rental_rate|total_rental_rate|
+|-------------------|-------------------|-------------------|-----------------|
+|2.98|0.99|4.99|2980
+-- SQLBook: Markup
