@@ -1,5 +1,7 @@
 -- SQLBook: Code
 
+-- SQLBook: Code
+
 -- SQLBook: Markup
 ## ATIVIDADE CAIO SQL AULA 06
 -- SQLBook: Markup
@@ -10,9 +12,4 @@
 INSERT INTO nome_tabela (colunaA, colunaB, ...) VALUES
     (valor1a, valor1b, ...),
     (valor2a, valor2b, ...),
-    (valor3a, valo
--- SQLBook: Markupr3b
-
-)
-;
-```
+    (valor3a, valor3b, ...)
