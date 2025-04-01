@@ -1,4 +1,5 @@
 Script para configurar o vscode
+
 Abra o Anaconda Prompt (anaconda3)
 
 
