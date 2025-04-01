@@ -1,0 +1,55 @@
+O que a rede social Discord armazena?
+Grupo;
+Micro Transações Internas;
+Perfil;
+Configurações;
+Usuários.
+
+Que dados/atributos precisamos armazenar sobre esses objetos/entidades?
+Grupo:
+Conversas;
+Participantes;
+Bots;
+Mídia;
+Cargos;
+Tópicos
+Chats de voz e de texto;
+Apelidos.
+
+Micro Transações Internas:
+Usuários;
+status de pagamento
+Compras.
+
+
+
+
+
+
+
+
+
+
+Perfil:
+Biografia;
+Foto;
+Banner;
+Contas externas vinculadas;
+Atividades;
+Emblema;
+Notas;
+Amigos;
+Status;
+Pronome.
+
+Configurações:
+Configurações de acessibilidade;
+Configurações do aplicativo;
+Dados Pessoais;
+
+
+
+
+Usuários:
+Amizades;
+Mensagens;
