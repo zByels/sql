@@ -52,10 +52,10 @@ CREATE TABLE membros_servidor (
 
 -- Inserindo dados nas tabelas
 INSERT INTO usuarios (nome, email, data_nascimento, senha) VALUES
-('guhluiz_', 'luizclaudio@gmail.com', '27-06-1997', 'guhluiz027'),
-('Eli91022i', 'elizete123@gmail.com', '17-06-2008', 'framengo123'),
-('fadolinkdozap', 'luizeira96@gmail.com', '05-05-2009', 'palmeiras51'),
-('Machado', 'martins_machado@gmail.com', '18-07-2008', 'v@sco2017');
+('guhluiz_', 'luizclaudio@gmail.com', '1997-06-27', 'guhluiz027'),
+('Eli91022i', 'elizete123@gmail.com', '2008-06-17', 'framengo123'),
+('fadolinkdozap', 'luizeira96@gmail.com', '2009-05-05', 'palmeiras51'),
+('Machado', 'martins_machado@gmail.com', '2008-07-18', 'v@sco2017');
 
 INSERT INTO servidores (nome, criador_id) VALUES
 ('Servidor do guhluiz_', 1),
