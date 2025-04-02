@@ -50,6 +50,17 @@ CREATE TABLE membros_servidor (
     FOREIGN KEY (servidor_id) REFERENCES servidores(id)
 );
 
+CREATE TABLE amizades (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    usuario1_id INT NOT NULL,
+    usuario2_id INT NOT NULL,
+    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (usuario1_id) REFERENCES usuarios(id),
+    FOREIGN KEY (usuario2_id) REFERENCES usuarios(id),
+    CONSTRAINT chk_amizades CHECK (usuario1_id != usuario2_id)
+);
+
+
 -- Inserindo dados nas tabelas
 INSERT INTO usuarios (nome, email, data_nascimento, senha) VALUES
 ('guhluiz_', 'luizclaudio@gmail.com', '1997-06-27', 'guhluiz027'),
@@ -130,3 +141,70 @@ INSERT INTO membros_servidor (usuario_id, servidor_id) VALUES
 (4, 1),
 (4, 2),
 (4, 3);
+
+-- Inserir 20 amizades aleatórias para cada usuário de forma bidirecional
+
+-- Para o usuário 1
+INSERT INTO amizades (usuario1_id, usuario2_id)
+SELECT 1 AS usuario1_id, id AS usuario2_id
+FROM usuarios
+WHERE id != 1
+ORDER BY RAND()
+LIMIT 20;
+
+-- Inserir as amizades do usuário 2 para o usuário 1
+INSERT INTO amizades (usuario1_id, usuario2_id)
+SELECT id AS usuario1_id, 1 AS usuario2_id
+FROM usuarios
+WHERE id != 1
+ORDER BY RAND()
+LIMIT 20;
+
+-- Para o usuário 2
+INSERT INTO amizades (usuario1_id, usuario2_id)
+SELECT 2 AS usuario1_id, id AS usuario2_id
+FROM usuarios
+WHERE id != 2
+ORDER BY RAND()
+LIMIT 20;
+
+-- Inserir as amizades do usuário 2 para o usuário 2
+INSERT INTO amizades (usuario1_id, usuario2_id)
+SELECT id AS usuario1_id, 2 AS usuario2_id
+FROM usuarios
+WHERE id != 2
+ORDER BY RAND()
+LIMIT 20;
+
+-- Para o usuário 3
+INSERT INTO amizades (usuario1_id, usuario2_id)
+SELECT 3 AS usuario1_id, id AS usuario2_id
+FROM usuarios
+WHERE id != 3
+ORDER BY RAND()
+LIMIT 20;
+
+-- Inserir as amizades do usuário 3 para o usuário 3
+INSERT INTO amizades (usuario1_id, usuario2_id)
+SELECT id AS usuario1_id, 3 AS usuario2_id
+FROM usuarios
+WHERE id != 3
+ORDER BY RAND()
+LIMIT 20;
+
+-- Para o usuário 4
+INSERT INTO amizades (usuario1_id, usuario2_id)
+SELECT 4 AS usuario1_id, id AS usuario2_id
+FROM usuarios
+WHERE id != 4
+ORDER BY RAND()
+LIMIT 20;
+
+-- Inserir as amizades do usuário 4 para o usuário 4
+INSERT INTO amizades (usuario1_id, usuario2_id)
+SELECT id AS usuario1_id, 4 AS usuario2_id
+FROM usuarios
+WHERE id != 4
+ORDER BY RAND()
+LIMIT 20;
+
