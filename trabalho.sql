@@ -1,8 +1,8 @@
 -- Criação do banco de dados
-CREATE DATABASE discord_clone;
+CREATE DATABASE discord_dos_guri;
 
 -- Usar o banco de dados criado
-USE discord_clone;
+USE discord_dos_guri;
 
 -- Tabela de usuários
 CREATE TABLE usuarios (
@@ -52,15 +52,15 @@ CREATE TABLE membros_servidor (
 
 -- Inserindo dados nas tabelas
 INSERT INTO usuarios (nome, email, data_nascimento, senha) VALUES
-('Alice', 'alice@email.com', '2000-01-01', 'senha123'),
-('Bob', 'bob@email.com', '1998-05-15', 'senha456'),
-('Carol', 'carol@email.com', '2002-09-20', 'senha789'),
-('Você', 'seuemail@email.com', '2005-02-10', 'suasenha');
+('guhluiz_', 'luizclaudio@gmail.com', '27-06-1997', 'guhluiz027'),
+('Eli91022i', 'elizete123@gmail.com', '17-06-2008', 'framengo123'),
+('fadolinkdozap', 'luizeira96@gmail.com', '05-05-2009', 'palmeiras51'),
+('Machado', 'martins_machado@gmail.com', '18-07-2008', 'v@sco2017');
 
 INSERT INTO servidores (nome, criador_id) VALUES
-('Servidor da Alice', 1),
-('Servidor do Bob', 2),
-('Servidor da Carol', 3);
+('Servidor do guhluiz_', 1),
+('Servidor do Eli91022i', 2),
+('Servidor do Machado', 3);
 
 INSERT INTO canais (servidor_id, nome, tipo) VALUES
 (1, 'Geral', 'texto'),
@@ -69,11 +69,11 @@ INSERT INTO canais (servidor_id, nome, tipo) VALUES
 (3, 'Discussões', 'texto');
 
 INSERT INTO mensagens (canal_id, usuario_id, conteudo, data_envio) VALUES
-(1, 1, 'Primeira mensagem da Alice!', '2025-03-08 12:00:00'),
-(2, 2, 'Olá, mundo!', '2025-03-08 12:30:00'),
-(3, 3, 'Mais uma mensagem!', '2025-03-08 13:00:00'),
-(4, 4, 'Esta é minha mensagem!', '2025-03-08 14:00:00'),
-(1, 1, 'Outra mensagem da Alice.', '2025-03-08 15:00:00');
+(1, 1, 'Primeira mensagem do luizera!', '2025-03-08 12:00:00'),
+(2, 2, 'fala, seus frangos!', '2025-03-08 12:30:00'),
+(3, 3, 'faz o L!', '2025-03-08 13:00:00'),
+(4, 4, 'Esta é a mensagem dp machado!', '2025-03-08 14:00:00'),
+(1, 1, 'se quiser sim machado.', '2025-03-08 15:00:00');
 
 INSERT INTO membros_servidor (usuario_id, servidor_id) VALUES
 (1, 1),
